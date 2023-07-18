@@ -1,0 +1,133 @@
+* {
+        box-sizing: border-box;     
+}
+
+
+html {
+        font-family: 'Pangolin', cursive;
+        font-family: 'Yanone Kaffeesatz', sans-serif;
+        color: white;
+        font-weight: 400;
+        text-decoration: none;
+}
+
+
+.background_main {
+        background-color: rgb(27, 26, 26);
+        padding: 30px 0px 10px 0px;
+}
+
+
+.content {
+        max-width: 1024px;
+        margin: auto;
+        padding-left: 10px;
+        padding-right: 10px;
+}
+
+
+/*Главный заголовок и текст*/
+
+.hero_title {
+        font-weight: 600;
+        font-size: 70px;
+        margin-top: 50px;
+        text-align: justify;
+ }
+
+    
+.hero_text {
+        margin-top: 40px;
+        margin-bottom: 40px;
+        font-size: 50px;
+}
+
+
+/* Динамическое добавление книг */
+
+
+.book_style {
+        border: 2px solid #f97316;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        padding: 30px;
+        font-size: 50px;
+        margin-bottom: 30px;
+}
+
+
+/* Кнопки */
+
+
+.button_style {
+        background-color: #f97316;
+        border-radius: 10px;
+        border-style: none;
+        padding: 15px;
+        width:150px;
+        font-size: 24px;
+        color: white;
+        cursor: pointer;
+        transition: 500ms linear;
+} 
+
+.button_style:hover {
+        color: #f97316;
+        background-color: white;
+}
+
+
+/* Огонь */
+
+.footer_image {
+        object-position: top center;
+        width: 100%;
+        height: 700px;
+        margin-top: 70px;
+}
+
+
+@media (max-width: 768px) {
+        .hero_title {
+                font-weight: 500;
+                font-size: 50px;
+         }  
+        .hero_text {
+                font-size: 30px;
+        }
+        .footer_image {
+                height: 500px;
+        }
+    
+}
+
+@media (max-width: 420px) {
+        .hero_title {
+                font-weight: 500;
+                font-size: 50px;
+         }  
+        .hero_text {
+                font-size: 30px;
+        }
+        .footer_image {
+                height: 300px;
+        }
+    
+}
+
+@media (max-width: 390px) {
+        .hero_title {
+                font-weight: 500;
+                font-size: 50px;
+         }  
+        .hero_text {
+                font-size: 30px;
+        }
+        .footer_image {
+                height: 300px;
+        }
+}
