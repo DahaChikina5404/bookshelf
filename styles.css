@@ -2,7 +2,6 @@
         box-sizing: border-box;     
 }
 
-
 html {
         font-family: 'Pangolin', cursive;
         font-family: 'Yanone Kaffeesatz', sans-serif;
@@ -11,12 +10,10 @@ html {
         text-decoration: none;
 }
 
-
 .background_main {
         background-color: rgb(27, 26, 26);
         padding: 30px 0px 10px 0px;
 }
-
 
 .content {
         max-width: 1024px;
@@ -27,25 +24,45 @@ html {
 
 
 /*Главный заголовок и текст*/
-
 .hero_title {
         font-weight: 600;
-        font-size: 70px;
+        font-size: 90px;
         margin-top: 50px;
         text-align: justify;
- }
+}
 
-    
 .hero_text {
         margin-top: 40px;
         margin-bottom: 40px;
-        font-size: 50px;
+        font-size: 40px;
+}
+
+
+/* Форма для добавления новой книги */
+#container_add-book {
+        font-size: 30px;
+        display: none;
+        flex-direction: column;
+        margin-top: 50px;
+}
+
+.input_book {
+        appearance: none;        
+        height: 34px;
+        width: 250px;
+        border: 1px solid white;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        margin-top: 10px;
+        outline: none;
+}
+
+.input_book:focus {
+        border-color: #f97316;
 }
 
 
 /* Динамическое добавление книг */
-
-
 .book_style {
         border: 2px solid #f97316;
         border-radius: 20px;
@@ -56,19 +73,25 @@ html {
         gap: 20px;
         padding: 30px;
         font-size: 50px;
+        margin-top: 30px;
         margin-bottom: 30px;
 }
 
 
+/* Картинки */
+.image_book {
+        height: 400px;
+        width: 300px;
+}
+
+
 /* Кнопки */
-
-
 .button_style {
         background-color: #f97316;
         border-radius: 10px;
         border-style: none;
-        padding: 15px;
-        width:150px;
+        padding: 10px;
+        width:250px;
         font-size: 24px;
         color: white;
         cursor: pointer;
@@ -82,7 +105,6 @@ html {
 
 
 /* Огонь */
-
 .footer_image {
         object-position: top center;
         width: 100%;
@@ -95,37 +117,47 @@ html {
         .hero_title {
                 font-weight: 500;
                 font-size: 50px;
-         }  
+        }  
         .hero_text {
+                font-size: 20px;
+        }
+        .book_style {
                 font-size: 30px;
+                width: 80%;
         }
         .footer_image {
                 height: 500px;
         }
-    
 }
 
 @media (max-width: 420px) {
         .hero_title {
                 font-weight: 500;
                 font-size: 50px;
-         }  
+        }  
         .hero_text {
+                font-size: 20px;
+        }
+        .book_style {
                 font-size: 30px;
+                width: 80%;
         }
         .footer_image {
                 height: 300px;
         }
-    
 }
 
 @media (max-width: 390px) {
         .hero_title {
                 font-weight: 500;
                 font-size: 50px;
-         }  
+        }  
         .hero_text {
+                font-size: 20px;
+        }
+        .book_style {
                 font-size: 30px;
+                width: 80%;
         }
         .footer_image {
                 height: 300px;
