@@ -1,38 +1,43 @@
+let count = 0
+
 const books = [
     {
-        id: 1,
+        id: count++,
         title: 'Мастер и Маргарита',
         authors: 'Михаил Булгаков',
         year: '1940',
-        image: 'src="https://cv7.litres.ru/pub/c/cover_415/22311873.webp"'
+        image: "https://cv7.litres.ru/pub/c/cover_415/22311873.webp"
     },
 
     {
-        id: 2,
+        id: count++,
         title: 'Чайка по имени Джонатан Ливингстон',
         authors: 'Ричард Бах',
         year: '1970',
-        image: 'src="https://frontart.ru/images/chayka-po-imeni-djonatan-livingston.jpg"'
+        image: "https://frontart.ru/images/chayka-po-imeni-djonatan-livingston.jpg"
     },
 
     {
-        id: 3,
+        id: count++,
         title: 'Хождение по мукам',
         authors: 'Алексей Толстой',
         year: '1941',
-        image: 'src="https://knijky.ru/sites/default/files/styles/264x390/public/1023615857.jpg?itok=3dYxzQg6"'
+        image: "https://knijky.ru/sites/default/files/styles/264x390/public/1023615857.jpg?itok=3dYxzQg6"
     },
 
     {
-        id: 4,
+        id: count++,
         title: 'Три чашки чая',
         authors: 'Грег Мортенсон, Дэвид Релин Оливер',
         year: '2006',
-        image: 'src="https://img3.labirint.ru/rc/bd7a48187d7bb49ab991a15854be3d12/363x561q80/books28/272367/cover.jpg?1612520752"'
+        image: "https://img3.labirint.ru/rc/bd7a48187d7bb49ab991a15854be3d12/363x561q80/books28/272367/cover.jpg?1612520752"
     }
 ]
 
-const booksList = document.getElementById('container')
+
+// Динамическое добавление объектов из масива
+
+const booksList = document.getElementById('container__with_books')
 
 function renderBooks() {
     booksList.innerHTML = ""
@@ -40,7 +45,7 @@ function renderBooks() {
     books.forEach((book) => {
         booksList.innerHTML += `
             <div class="book_style content">
-                <img class="image_book" ${book.image}/>
+                <img class="image_book" src="${book.image}"/> 
                 <p>${book.title}</p>
                 <p>${book.authors}</p>
                 <p>${book.year}</p>
@@ -49,6 +54,15 @@ function renderBooks() {
             </div>`
     })
 }   
+
+
+// Сохранение в Local Storage
+
+function saveLocalStorage() {
+    const booksJson = JSON.stringify(books)
+    localStorage.setItem("booksBrowser", booksJson)
+}
+
 
 // Удалить книгу
 
@@ -59,8 +73,11 @@ function deleteBooks(id) {
 
         const bookIndex = books.indexOf(book)
         books.splice(bookIndex, 1)
+
         renderBooks()
+        saveLocalStorage()
 }
+
 
 // Очистка поля ввода
 
@@ -72,33 +89,31 @@ function cleanForm() {
 }
 
 
+// ОТКРЫВАЕМ и ЗАКРЫВАЕМ ПОЛЯ ДЛЯ ВВОДА КНИГИ (модальное меню)
 
-// ОТКРЫВАЕМ ПОЛЯ ДЛЯ ВВОДА КНИГИ
-// объявляем переменную на открытие полей ввода
+const containerAdd = document.getElementById ('modal_add-book')
+const openInputBox = document.getElementById('open-modal')
+const closeInputBox = document.getElementById('close-modal')
 
-let isOpen = false
 
-function openInputBox() {
-
-        const containerAdd = document.getElementById ('container_add-book')
-
-        // Открытие мобильного меню по нажатию кнопки
-
-        if (isOpen) {
-            containerAdd.style.display = 'none'
-            isOpen = false
-        }
-        else {
-            containerAdd.style.display = 'flex'
-            isOpen = true
-        }
+function openModal() {
+    containerAdd.style.display = 'flex'
 }
+
+function closeModal() {
+    containerAdd.style.display = 'none'
+}
+
+openInputBox.addEventListener('click', openModal)
+closeInputBox.addEventListener('click', closeModal)
+    
 
 
 // Добавить книгу
 
-function addBook() {
-
+const addBook = document.getElementById('add__new_book')
+addBook.addEventListener ('click', () => {
+        
         const imageValue = document.getElementById('image').value
         const titleValue = document.getElementById('title').value
         const authorsValue = document.getElementById('authors').value
@@ -108,14 +123,25 @@ function addBook() {
             image: imageValue,
             title: titleValue,
             authors: authorsValue,
-            year: yearValue
+            year: yearValue,
+            id: count++
         }
 
         books.push(book)
+
         renderBooks()
         cleanForm()
+        closeModal()
+        saveLocalStorage()
+})
 
 
-}
+// Получение данных из Local Storage
+
+const booksJson = localStorage.getItem("booksBrowser")
+
+// if (booksJson) {
+//     books = JSON.parse(booksJson)
+// }
 
 renderBooks()

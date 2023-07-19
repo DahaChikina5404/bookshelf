@@ -1,5 +1,6 @@
 * {
-        box-sizing: border-box;     
+        box-sizing: border-box;
+        scroll-behavior: smooth;
 }
 
 html {
@@ -26,25 +27,41 @@ html {
 /*Главный заголовок и текст*/
 .hero_title {
         font-weight: 600;
-        font-size: 90px;
+        font-size: 60px;
         margin-top: 50px;
-        text-align: justify;
+        text-align: center;
 }
 
 .hero_text {
-        margin-top: 40px;
-        margin-bottom: 40px;
-        font-size: 40px;
+        margin-top: 20px;
+        font-size: 30px;
 }
 
 
 /* Форма для добавления новой книги */
-#container_add-book {
-        font-size: 30px;
+#modal_add-book {
+        background-color: rgba(255, 0, 0, 0.204);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
         display: none;
-        flex-direction: column;
-        margin-top: 50px;
+        justify-content: center;
+        align-items: center;
 }
+
+.add_modal {
+        background-color: rgb(27, 26, 26);
+        font-size: 30px;
+        padding: 40px;
+        border-radius: 20px;
+}
+
+#close-modal {
+        padding-left: 90%;
+}
+
 
 .input_book {
         appearance: none;        
@@ -72,7 +89,7 @@ html {
         align-items: center;
         gap: 20px;
         padding: 30px;
-        font-size: 50px;
+        font-size: 30px;
         margin-top: 30px;
         margin-bottom: 30px;
 }
@@ -122,7 +139,6 @@ html {
                 font-size: 20px;
         }
         .book_style {
-                font-size: 30px;
                 width: 80%;
         }
         .footer_image {
@@ -139,7 +155,6 @@ html {
                 font-size: 20px;
         }
         .book_style {
-                font-size: 30px;
                 width: 80%;
         }
         .footer_image {
@@ -156,10 +171,38 @@ html {
                 font-size: 20px;
         }
         .book_style {
-                font-size: 30px;
                 width: 80%;
         }
         .footer_image {
                 height: 300px;
         }
 }
+
+@media (max-width: 320px) {
+        .hero_title {
+                font-weight: 500;
+                font-size: 40px;
+        }  
+        .hero_text {
+                font-size: 20px;
+        }
+        .add_modal {
+                font-size: 20px;
+                padding:20px;
+        }
+        .book_style {
+                font-size: 20px;
+                width: 80%;
+        }
+        .image_book {
+                height: 250px;
+                width: 180px;
+        }
+        .button_style {
+                width:200px;
+                font-size: 18px;
+        }
+        .footer_image {
+                height: 200px;
+        }
+} 

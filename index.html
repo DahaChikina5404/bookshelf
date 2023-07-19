@@ -10,24 +10,36 @@
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Pangolin&family=Yanone+Kaffeesatz:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+		<script src="https://kit.fontawesome.com/a48c835c82.js" crossorigin="anonymous"></script>
 	</head>
 	
 	<body>
 		<div class="background_main">
-			
+
 <!--Главный заголовок и текст-->	
+
 			<div class="content">
 				<div class="hero_title">
 					<h1>Книги, которые я взяла бы с собой на необитаемый остров</h1>
 				</div>	
 				<div class="hero_text">
 					<p>«Рукописи не горят» (Воланд)</p>
-				</div>	
+				</div>
+				<br>
+				<br>
+				<button id="open-modal" class="button_style">Взять еще книгу</button>
+			</div>
+
+<!--Динамическое добавление книг-->	
+
+			<div id="container__with_books"></div>
+			<img class="footer_image" src="/image/fire.jpg"/>
 
 <!-- Форма для добавления новой книги -->
-				<button onclick="openInputBox()" class="button_style">Взять еще книгу</button>
 
-				<div id="container_add-book">
+			<div id="modal_add-book">
+				<div class="add_modal">
+					<i class="fa-solid fa-xmark" id="close-modal"></i>
 					<div>
 						<p>Название книги</p>
 						<input class="input_book" id="title"/>
@@ -44,15 +56,10 @@
 						<p>Ссылка на изображение</p>
 						<input class="input_book" id="image"/>
 					</div>
-
-					<button onclick="addBook()" class="button_style">Сохранить</button>
-				</div>
+					
+					<button id="add__new_book" class="button_style">Положить в рюкзак</button>
+				</div>	
 			</div>
-		
-<!--Динамическое добавление книг-->	
-			<div id="container"></div>
-				
-			<img class="footer_image" src="/image/fire.jpg"/>
 		</div>
 
 		<script src="script.js"></script>
