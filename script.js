@@ -1,6 +1,6 @@
 let count = 0
 
-const books = [
+let books = [
     {
         id: count++,
         title: 'Мастер и Маргарита',
@@ -49,7 +49,7 @@ function renderBooks() {
                 <p>${book.title}</p>
                 <p>${book.authors}</p>
                 <p>${book.year}</p>
-                <button class="button_style">Изменить</button>
+                <button id="" class="button_style">Изменить</button>
                 <button onclick='deleteBooks(${book.id})' class="button_style">Удалить</button>
             </div>`
     })
@@ -108,7 +108,6 @@ openInputBox.addEventListener('click', openModal)
 closeInputBox.addEventListener('click', closeModal)
     
 
-
 // Добавить книгу
 
 const addBook = document.getElementById('add__new_book')
@@ -135,13 +134,12 @@ addBook.addEventListener ('click', () => {
         saveLocalStorage()
 })
 
-
 // Получение данных из Local Storage
 
 const booksJson = localStorage.getItem("booksBrowser")
 
-// if (booksJson) {
-//     books = JSON.parse(booksJson)
-// }
+if (booksJson) {
+    books = JSON.parse(booksJson)
+}
 
 renderBooks()

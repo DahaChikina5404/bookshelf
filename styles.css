@@ -39,6 +39,7 @@ html {
 
 
 /* Форма для добавления новой книги */
+
 #modal_add-book {
         background-color: rgba(255, 0, 0, 0.204);
         position: absolute;
@@ -51,6 +52,8 @@ html {
         align-items: center;
 }
 
+
+
 .add_modal {
         background-color: rgb(27, 26, 26);
         font-size: 30px;
@@ -58,7 +61,8 @@ html {
         border-radius: 20px;
 }
 
-#close-modal {
+
+.close-modal {
         padding-left: 90%;
 }
 
@@ -77,6 +81,7 @@ html {
 .input_book:focus {
         border-color: #f97316;
 }
+
 
 
 /* Динамическое добавление книг */
