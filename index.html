@@ -39,13 +39,15 @@
 
 			<div id="modal_add-book">
 				<div class="add_modal">
+					<P id="error"></P>
 					<i class="fa-solid fa-xmark close-modal" id="close-modal"></i>
+					
 					<div>
-						<p>Название книги</p>
+						<p>Название книги *</p>
 						<input class="input_book" id="title"/>
 					</div>
 					<div>
-						<p>Автор</p>
+						<p>Автор *</p>
 						<input class="input_book" id="authors"/>
 					</div>
 					<div>
@@ -58,6 +60,32 @@
 					</div>
 					
 					<button id="add__new_book" class="button_style">Положить в рюкзак</button>
+				</div>	
+			</div>
+
+<!-- Форма для изменения ТЕКУЩЕЙ книги -->
+
+			<div id="modal_change-book">
+				<div class="add_modal">
+					<i class="fa-solid fa-xmark close-modal" id="close_change-modal"></i>
+					<div>
+						<p>Название книги</p>
+						<input class="input_book" id="title_change"/>
+					</div>
+					<div>
+						<p>Автор</p>
+						<input class="input_book" id="authors_change"/>
+					</div>
+					<div>
+						<p>Год издания</p>
+						<input class="input_book" id="year_change"/>
+					</div>
+					<div>
+						<p>Ссылка на изображение</p>
+						<input class="input_book" id="image_change"/>
+					</div>
+					
+					<button id="change__with_book" class="button_style">Сохранить изменения</button>
 				</div>	
 			</div>
 		</div>

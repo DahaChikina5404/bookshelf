@@ -1,4 +1,5 @@
 let count = 0
+let currentBookId
 
 let books = [
     {
@@ -49,7 +50,7 @@ function renderBooks() {
                 <p>${book.title}</p>
                 <p>${book.authors}</p>
                 <p>${book.year}</p>
-                <button id="" class="button_style">Изменить</button>
+                <button onclick='changedBooks(${book.id})' class="button_style">Изменить</button>
                 <button onclick='deleteBooks(${book.id})' class="button_style">Удалить</button>
             </div>`
     })
@@ -59,8 +60,8 @@ function renderBooks() {
 // Сохранение в Local Storage
 
 function saveLocalStorage() {
-    const booksJson = JSON.stringify(books)
-    localStorage.setItem("booksBrowser", booksJson)
+        const booksJson = JSON.stringify(books)
+        localStorage.setItem("booksBrowser", booksJson)
 }
 
 
@@ -74,6 +75,90 @@ function deleteBooks(id) {
         const bookIndex = books.indexOf(book)
         books.splice(bookIndex, 1)
 
+        renderBooks()
+        saveLocalStorage()
+}
+
+
+
+//  Обновление данных о книге (нажатие кнопки "Изменить")
+
+
+// Вызов полей в модальном окне с данными о книге
+
+function changedInput(book) {
+    document.getElementById('image_change').value = book.image
+    document.getElementById('title_change').value = book.title
+    document.getElementById('authors_change').value = book.authors
+    document.getElementById('year_change').value = book.year
+}
+
+
+//  Находим элемент в окне обновления книги
+
+const windowChanged = document.getElementById('modal_change-book')
+
+// Закрытие модального окна (обновление книги)
+const closeChangedBox = document.getElementById('close_change-modal')
+
+function closeChangedModal() {
+    windowChanged.style.display = 'none'
+}
+closeChangedBox.addEventListener('click', closeChangedModal)
+
+
+// Вызов функции обновления книги при нажатии кнопки "Изменить"
+
+function changedBooks(id) {
+
+    currentBookId = id
+    windowChanged.style.display = 'flex'  // открытие модального окна обновления книги
+            const book = books.find((b) => {
+                return b.id === id  // ищем книгу по id
+            })
+
+        changedInput(book) // Вызов полей с данными о книге 
+
+
+        // Обновление данных о книге (нажатие на кнопку "Сохранить изменения")
+
+        const buttonChanged = document.getElementById('change__with_book')
+        buttonChanged.addEventListener('click', () => {
+            makeChanged()
+        })
+}
+
+
+// Обновление данных  
+
+
+function makeChanged() {
+        const imageChangeValue = document.getElementById('image_change').value
+        const titleChangeValue = document.getElementById('title_change').value
+        const authorsChangeValue = document.getElementById('authors_change').value
+        const yearChangeValue = document.getElementById('year_change').value
+             
+        
+// Создание книги с обновленными данными
+
+        const changeBook = {
+                image: imageChangeValue,
+                title: titleChangeValue,
+                authors: authorsChangeValue,
+                year: yearChangeValue,
+                id: currentBookId
+        }
+
+
+        const bookIdChanged = books.indexOf(book)
+        books.splice(bookIdChanged, 1, changeBook)
+
+
+        const book = books.find((change) => {
+            return change.id === currentBookId  // ищем книгу по id
+        })
+
+        closeChangedModal()
         renderBooks()
         saveLocalStorage()
 }
@@ -118,6 +203,13 @@ addBook.addEventListener ('click', () => {
         const authorsValue = document.getElementById('authors').value
         const yearValue = document.getElementById('year').value
 
+// Условие на заполнение обязательных полей
+
+        if (titleValue === '' || authorsValue === '') {
+            document.getElementById('error').innerHTML = '* Заполните обязательные поля'
+            return
+        }        
+
         const book = {
             image: imageValue,
             title: titleValue,
@@ -125,7 +217,7 @@ addBook.addEventListener ('click', () => {
             year: yearValue,
             id: count++
         }
-
+        
         books.push(book)
 
         renderBooks()
@@ -137,9 +229,8 @@ addBook.addEventListener ('click', () => {
 // Получение данных из Local Storage
 
 const booksJson = localStorage.getItem("booksBrowser")
-
-if (booksJson) {
-    books = JSON.parse(booksJson)
-}
+        if (booksJson) {
+            books = JSON.parse(booksJson)
+        }
 
 renderBooks()
