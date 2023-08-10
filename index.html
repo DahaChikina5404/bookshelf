@@ -35,11 +35,11 @@
 			<div id="container__with_books"></div>
 			<img class="footer_image" src="/image/fire.jpg"/>
 
-<!-- Форма для добавления новой книги -->
+<!-- Форма для добавления НОВОЙ книги -->
 
 			<div id="modal_add-book">
 				<div class="add_modal">
-					<P id="error"></P>
+					<p id="error"></p>
 					<i class="fa-solid fa-xmark close-modal" id="close-modal"></i>
 					
 					<div>
@@ -63,33 +63,33 @@
 				</div>	
 			</div>
 
-<!-- Форма для изменения ТЕКУЩЕЙ книги -->
+<!-- Форма для обновления ТЕКУЩЕЙ книги -->
 
 			<div id="modal_change-book">
 				<div class="add_modal">
+					<p id="error_change"></p>
 					<i class="fa-solid fa-xmark close-modal" id="close_change-modal"></i>
 					<div>
-						<p>Название книги</p>
+						<p>Название книги *</p>
 						<input class="input_book" id="title_change"/>
 					</div>
 					<div>
-						<p>Автор</p>
+						<p>Автор *</p>
 						<input class="input_book" id="authors_change"/>
 					</div>
 					<div>
-						<p>Год издания</p>
+						<p>Год издания *</p>
 						<input class="input_book" id="year_change"/>
 					</div>
 					<div>
-						<p>Ссылка на изображение</p>
+						<p>Ссылка на изображение *</p>
 						<input class="input_book" id="image_change"/>
 					</div>
-					
+	
 					<button id="change__with_book" class="button_style">Сохранить изменения</button>
 				</div>	
 			</div>
 		</div>
-
 		<script src="script.js"></script>
 	</body>
 </html>

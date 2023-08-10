@@ -80,9 +80,7 @@ function deleteBooks(id) {
 }
 
 
-
 //  Обновление данных о книге (нажатие кнопки "Изменить")
-
 
 // Вызов полей в модальном окне с данными о книге
 
@@ -94,7 +92,7 @@ function changedInput(book) {
 }
 
 
-//  Находим элемент в окне обновления книги
+//  Вызов модального окна для обновления книги
 
 const windowChanged = document.getElementById('modal_change-book')
 
@@ -113,8 +111,10 @@ function changedBooks(id) {
 
     currentBookId = id
     windowChanged.style.display = 'flex'  // открытие модального окна обновления книги
-            const book = books.find((b) => {
-                return b.id === id  // ищем книгу по id
+    document.getElementById('error_change').innerHTML = ''
+
+            const book = books.find((number) => {
+                return number.id === id  // ищем книгу по id
             })
 
         changedInput(book) // Вызов полей с данными о книге 
@@ -137,7 +137,13 @@ function makeChanged() {
         const authorsChangeValue = document.getElementById('authors_change').value
         const yearChangeValue = document.getElementById('year_change').value
              
-        
+// Условие на заполнение обязательных полей
+
+        if (imageChangeValue === '' || titleChangeValue === '' || authorsChangeValue ==='' || yearChangeValue === '') {
+            document.getElementById('error_change').innerHTML = '* Заполните обязательные поля'
+            return
+        } 
+
 // Создание книги с обновленными данными
 
         const changeBook = {
@@ -148,14 +154,12 @@ function makeChanged() {
                 id: currentBookId
         }
 
+        const book = books.find((number) => {
+            return number.id === currentBookId  // ищем книгу по id
+        })
 
         const bookIdChanged = books.indexOf(book)
         books.splice(bookIdChanged, 1, changeBook)
-
-
-        const book = books.find((change) => {
-            return change.id === currentBookId  // ищем книгу по id
-        })
 
         closeChangedModal()
         renderBooks()
@@ -179,9 +183,10 @@ const containerAdd = document.getElementById ('modal_add-book')
 const openInputBox = document.getElementById('open-modal')
 const closeInputBox = document.getElementById('close-modal')
 
-
 function openModal() {
     containerAdd.style.display = 'flex'
+    document.getElementById('error').innerHTML = ''
+    cleanForm()
 }
 
 function closeModal() {

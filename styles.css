@@ -76,7 +76,8 @@ html {
 }
 
 /* ошибка (заполните все поля) */
-#error {
+#error,
+#error_change {
         color: #f97316;
         font-size: 24px;
         font-style: italic;
