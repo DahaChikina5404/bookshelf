@@ -131,7 +131,6 @@ function changedBooks(id) {
 
 // Обновление данных  
 
-
 function makeChanged() {
         const imageChangeValue = document.getElementById('image_change').value
         const titleChangeValue = document.getElementById('title_change').value
